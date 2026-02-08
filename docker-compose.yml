@@ -6,8 +6,6 @@ services:
       - POSTGRES_USER=${DB_USER:-postgres}
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
       - POSTGRES_DB=${DB_NAME:-labelizer}
-    ports:
-      - "5432:5432"
     volumes:
       - ./backend/docker/docker/initdb_scripts:/docker-entrypoint-initdb.d
       - pgdata:/var/lib/postgresql/data
@@ -24,8 +22,6 @@ services:
       context: ./backend
       dockerfile: docker/Dockerfile
       target: production
-    ports:
-      - "42042:42042"
     environment:
       - WORKSPACE_DIR=${WORKSPACE_DIR:-/app/data}
       - DEV_MOD=${DEV_MOD:-0}
@@ -54,8 +50,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
     depends_on:
       backend:
         condition: service_healthy
