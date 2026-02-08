@@ -1,0 +1,14 @@
+**/node_modules
+**/*.log
+*/*.md
+*/build
+*/e2e
+*/Dockerfile
+*/.dockerignore
+**/.gitignore
+**/.git
+**/__pycache__
+**/dist
+**/tests
+**/sphinx
+*/Jenkinsfile

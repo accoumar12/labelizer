@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+*.db
+.env
+env/
+env3.*/
+Pipfile.lock
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+dist/
+dist-ssr/
+*.local
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+log.txt
+
+# Build artifacts
+site/
+docs_build/
+.netlify/
+
+# Old git repos (if not removed)
+backend/.git/
+frontend/.git/

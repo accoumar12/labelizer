@@ -1,0 +1,30 @@
+select = ["ALL"]
+ignore = [
+    #### specific rules
+    "D100", # Missing public modules docstring
+    "D101", # Missing public class docstring
+    "D102", # Missing public method docstring
+    "D103", # Missing public function docstring
+    "D105", # Missing magic method docstring
+    "D106", # Missing public nested cladd docstring
+    "D107", # Missing init docstring
+    "E501", # Line is too long
+    "PLR0913", # Too much arguments
+    "S101", # Assert detected
+    "TD002", # TODO author needed
+    "TD003", # Missing TODO link to issues
+    "ANN002", # Missing type annotation for args
+    "ANN003", # Missing type annotation for kwargs
+    "ANN101", # Chef that self has type annotation
+    "NPY002", # Replace numpy.random.seed
+    "PERF401", # Replace with list comprehension
+    "EXE003", # Shebang should contain python
+    "EXE005", # Shebang should be at the beginning of the file
+    "ARG001", # Unused arguments
+    "B008", # Check for function calls in default function arguments
+    "ANN102", # Check that cls has type annotation
+    "FBT001", # Boolean in function definition
+    "FBT002", # Default boolean in function definition
+    "TCH001", # Type checking block needed for first_party
+    "TCH002", # Type checking block needed for third-party
+]
