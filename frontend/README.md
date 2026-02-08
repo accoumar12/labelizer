@@ -2,17 +2,6 @@
 
 This is the frontend for the Labelizer app, built with React and Vite.
 
-## Tech Stack
-
-- **Framework**: React 18.2
-- **Build Tool**: Vite
-- **Routing**: React Router v6
-- **UI Components**: Radix UI + shadcn/ui
-- **Styling**: TailwindCSS
-- **State Management**: Jotai + React Query
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-
 ## Development
 
 For general development setup, see the root [DEVELOPMENT.md](../DEVELOPMENT.md).
@@ -25,15 +14,6 @@ npm install
 
 # Start dev server (http://localhost:5173)
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Regenerate API client from backend
-npm run generate
 ```
 
 ### API Client Generation

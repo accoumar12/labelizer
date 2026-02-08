@@ -1,0 +1,45 @@
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+    networks:
+      - default
+
+  backend:
+    restart: "no"
+    ports:
+      - "42042:42042"
+    environment:
+      - DEV_MOD=1
+    networks:
+      - default
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./backend/backend
+          target: /app/backend
+          ignore:
+            - __pycache__/
+            - "*.pyc"
+            - "*.db"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    restart: "no"
+    ports:
+      - "5173:5173"
+    networks:
+      - default
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/src
+          target: /app/src
+        - action: rebuild
+          path: ./frontend/package.json
+
+networks:
+  default:
+    driver: bridge

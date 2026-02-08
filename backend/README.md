@@ -2,14 +2,6 @@
 
 This is the backend for the Labelizer app, built with FastAPI and PostgreSQL.
 
-## Architecture
-
-- **Framework**: FastAPI with Uvicorn/Gunicorn
-- **Database**: PostgreSQL with SQLAlchemy ORM
-- **Vector Support**: pgvector for embeddings
-- **Migrations**: Alembic
-- **API Port**: 42042
-
 ## Development
 
 For general development setup, see the root [DEVELOPMENT.md](../DEVELOPMENT.md).

@@ -15,6 +15,9 @@ WORKDIR /app
 
 COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
 
+# Install curl for healthchecks
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 COPY  ../backend ./backend

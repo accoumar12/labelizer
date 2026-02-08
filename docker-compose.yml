@@ -1,0 +1,77 @@
+services:
+  postgres:
+    image: postgres:16.2
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_DB=${DB_NAME:-labelizer}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./backend/docker/docker/initdb_scripts:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - labelizer-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile
+      target: production
+    ports:
+      - "42042:42042"
+    environment:
+      - WORKSPACE_DIR=${WORKSPACE_DIR:-/app/data}
+      - DEV_MOD=${DEV_MOD:-0}
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME:-labelizer}
+      - DB_SCHEMA=${DB_SCHEMA:-labelizer}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - workspace-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:42042/api/labelizer/v1/config"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - labelizer-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - labelizer-network
+
+networks:
+  labelizer-network:
+    driver: bridge
+
+volumes:
+  workspace-data:
+  pgdata:

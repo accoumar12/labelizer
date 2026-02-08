@@ -1,4 +1,6 @@
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-  CREATE DATABASE labelizer;
-EOSQL
+#!/bin/bash
+set -e
+
+# Database is already created by POSTGRES_DB env var, so skip this script
+echo "Database creation handled by POSTGRES_DB environment variable"
 
