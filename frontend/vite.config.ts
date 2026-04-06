@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/labelizer": {
-        target: "http://127.0.0.1:42042",
+        target: process.env.VITE_API_URL || "http://127.0.0.1:42042",
         changeOrigin: true,
       },
     },
