@@ -44,7 +44,9 @@ services:
       retries: 3
       start_period: 40s
     networks:
-      - labelizer-network
+      labelizer-network:
+        aliases:
+          - labelizer-backend
 
   frontend:
     build:
