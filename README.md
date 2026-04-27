@@ -1,8 +1,14 @@
 # Labelizer
 
+An intuitive application for labeling triplets, designed for machine learning and data annotation tasks.
+
+Try it live [here](https://labelizer.accoumar.fr/).
+
 https://github.com/user-attachments/assets/51cbe763-9a45-43dd-b0f9-c8ccd052451a
 
-An intuitive application for labeling triplets, designed for machine learning and data annotation tasks. This application provides a flexible interface for working with any type of triplets - all you need are images of the items you're working with!
+## Introduction
+
+This application provides a flexible interface for working with any type of triplets - all you need are images of the items you're working with!
 
 A triplet is a set of three elements: an anchor serves as the reference point, a positive element is similar to the anchor, and a negative element is dissimilar to the anchor.
 
